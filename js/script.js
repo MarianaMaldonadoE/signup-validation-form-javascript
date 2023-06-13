@@ -1,4 +1,4 @@
-const form = document.querySelector("form"),
+const form = document.querySelector("form"), //element object representing the element that matches the selector
   emailField = form.querySelector(".email-field"),
   emailInput = emailField.querySelector(".email"),
   passField = form.querySelector(".create-password"),
@@ -8,13 +8,14 @@ const form = document.querySelector("form"),
 
 // Email Validtion
 function checkEmail() {
-  const emaiPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  const emaiPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/; //validate the characters of email
   if (!emailInput.value.match(emaiPattern)) {
     return emailField.classList.add("invalid"); 
   }
   emailField.classList.remove("invalid"); 
 }
 
+//Show and hide password
 const eyeIcons = document.querySelectorAll(".show-hide");
 
 eyeIcons.forEach((eyeIcon) => {
@@ -34,8 +35,7 @@ eyeIcons.forEach((eyeIcon) => {
 // Password Validation
 function createPass() {
   const passPattern =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; //characters to validate the password
   if (!passInput.value.match(passPattern)) {
     return passField.classList.add("invalid"); 
   }
@@ -51,14 +51,14 @@ function confirmPass() {
 }
 
 // Calling Funtion on Form Sumbit
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", (e) => { //method that will execute the submit button
   e.preventDefault(); 
   checkEmail();
   createPass();
   confirmPass();
 
 
-  emailInput.addEventListener("keyup", checkEmail);
+  emailInput.addEventListener("keyup", checkEmail); //event to ocurr after any other event to control pressing or pressing key
   passInput.addEventListener("keyup", createPass);
   cPassInput.addEventListener("keyup", confirmPass);
 
